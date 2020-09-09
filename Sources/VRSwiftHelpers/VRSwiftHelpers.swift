@@ -1,10 +1,10 @@
 import UIKit
 
-class Navigator {
+public class Navigator {
     
     // MARK: - DisplayVCType enum
 
-    enum DisplayVCType {
+    public enum DisplayVCType {
         case push
         case present
     }
@@ -12,11 +12,10 @@ class Navigator {
     // MARK: - Properties
     
     private var viewController: UIViewController
-    static private let mainSBName = "Main"
 
     // MARK: - Init
 
-    init(vc: UIViewController) {
+    public init(vc: UIViewController) {
         self.viewController = vc
     }
     
@@ -29,7 +28,7 @@ class Navigator {
     ///   - sbName: name of storyboard where destination vc is
     /// - Returns: destination view controller
     public func instantiateVC<T>(withDestinationViewControllerType vcType: T.Type,
-                                            andStoryboardName sbName: String = mainSBName) -> T? where T: UIViewController {
+                                            andStoryboardName sbName: String = "Main") -> T? where T: UIViewController {
         let storyBoard: UIStoryboard = UIStoryboard(name: sbName, bundle: nil)
         let destinationVC = storyBoard.instantiateViewController(withIdentifier: String(describing: vcType.self))
 
